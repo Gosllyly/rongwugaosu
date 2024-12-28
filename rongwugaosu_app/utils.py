@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.core.cache import caches
 
 # 初始化仿真标记
-flag = "is_emulating"
+flag = "is_simulating"
 cache = caches['default']
 cache.set(flag, False)
 
@@ -26,12 +26,12 @@ def uniform_response(success, code, message, data):
 
 
 # 判断是否正在仿真
-def is_emulating():
+def is_simulating():
     return cache.get(flag)
 
 
 # 设置正在仿真标记位
-def set_emulating():
+def set_simulating():
     with lock:
         if cache.get(flag):
             return False
@@ -41,5 +41,5 @@ def set_emulating():
 
 
 # 恢复标记位
-def reset_emulating():
+def reset_simulating():
     cache.set(flag, False)
