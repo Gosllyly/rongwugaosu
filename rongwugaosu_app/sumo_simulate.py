@@ -24,6 +24,10 @@ def simulate(args):
 
     # 解析k-v 参数
     step = args.get("step")
+
+    # 根据 args 传进的参数，再去修改 sumo 启动需要的路由文件 sumo/routes.rou.xml todo
+    # 可以定义一个文件模板，每次修改模板文件中的占位符，生成新的文件作为 sumo 启动所需的文件
+
     # 启动 SUMO
     traci.start([sumo_binary, "-c", config_file])
 
