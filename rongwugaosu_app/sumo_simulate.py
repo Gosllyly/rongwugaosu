@@ -39,6 +39,7 @@ def simulate(args):
     # 停止仿真
     traci.close()
     print("仿真完成！")
+    # 仿真状态复位
     reset_simulating()
 
 

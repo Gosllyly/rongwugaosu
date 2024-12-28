@@ -5,7 +5,7 @@ from django.http import HttpRequest
 from django.views import View
 
 from ..sumo_simulate import simulate
-from ..utils import is_simulating, uniform_response, set_simulating, reset_simulating
+from ..utils import is_simulating, uniform_response, set_simulating
 from rest_framework.decorators import api_view
 
 
