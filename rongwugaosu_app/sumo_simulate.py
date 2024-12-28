@@ -10,6 +10,12 @@ from rongwugaosu_app.utils import reset_simulating
 # 执行仿真操作
 def simulate(args):
     try:
+        # 解析k-v 参数
+        step = args.get("step")  ## 仿真的时间，单位是秒
+
+        # 根据 args 传进的参数，再去修改 sumo 启动需要的路由文件 sumo/routes.rou.xml todo
+        # 可以定义一个文件模板，每次修改模板文件中的占位符，生成新的文件作为 sumo 启动所需的文件
+
         # time.sleep(3)
         # 设置 SUMO 环境变量
         if "SUMO_HOME" not in os.environ:
@@ -23,12 +29,6 @@ def simulate(args):
         current_dir_path = os.path.dirname(os.path.abspath(__file__))
         # 设置 sumo 配置文件的绝对路径
         config_file = current_dir_path + "/sumo/osm.sumocfg"
-
-        # 解析k-v 参数
-        step = args.get("step")
-
-        # 根据 args 传进的参数，再去修改 sumo 启动需要的路由文件 sumo/routes.rou.xml todo
-        # 可以定义一个文件模板，每次修改模板文件中的占位符，生成新的文件作为 sumo 启动所需的文件
 
         # 启动 SUMO
         traci.start([sumo_binary, "-c", config_file])
