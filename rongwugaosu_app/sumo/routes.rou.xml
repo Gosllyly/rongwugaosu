@@ -1,5 +1,5 @@
 <routes>
-    <!-- 定义车辆类型 -->
+    <!-- 定义车辆类型 maxSpeed 车速(米/秒)-->
     <vType id="passenger" accel="2.6" decel="4.5" sigma="0.5" length="5.0" maxSpeed="40.0"/>
 
 
@@ -36,7 +36,6 @@
 
 
     <!-- 定义流量 -->
-
     <flow id="flowS1" begin="0" end="3600" type="passenger" route="routeS1-2" probability="1"/>
     <flow id="flowS2" begin="0" end="3600" type="passenger" route="routeS2-3" probability="1"/>
     <flow id="flowS3" begin="0" end="3600" type="passenger" route="routeS3-4" probability="1"/>
