@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-12-29 02:03:51 by Eclipse SUMO GUI Version 1.19.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="D:\sumo\.project\openstreetmap\2map.net.xml"/>
+        <route-files value="D:\sumo\.project\openstreetmap\routes.rou.xml"/>
+        <additional-files value="D:\sumo\.project\openstreetmap\MenJiaWeiZhi.add.xml"/>
+    </input>
+
+    <output>
+        <fcd-output value="D:\sumo\.project\openstreetmap\fcd-output.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+    </time>
+
+    <gui_only>
+        <quit-on-end value="t"/>
+        <start value="t"/>
+    </gui_only>
+
+</configuration>
+-->
+
+<detector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/det_e1_file.xsd">
+    <interval begin="0.00" end="300.00" id="SK654" nVehContrib="91" flow="1092.00" occupancy="10.06" speed="20.57" harmonicMeanSpeed="19.92" length="5.00" nVehEntered="92"/>
+    <interval begin="300.00" end="600.00" id="SK654" nVehContrib="9" flow="108.00" occupancy="93.00" speed="3.04" harmonicMeanSpeed="0.21" length="5.00" nVehEntered="9"/>
+    <interval begin="600.00" end="900.00" id="SK654" nVehContrib="5" flow="60.00" occupancy="95.50" speed="1.40" harmonicMeanSpeed="0.09" length="5.00" nVehEntered="5"/>
+    <interval begin="900.00" end="1200.00" id="SK654" nVehContrib="9" flow="108.00" occupancy="92.34" speed="1.98" harmonicMeanSpeed="0.13" length="5.00" nVehEntered="9"/>
+    <interval begin="1200.00" end="1500.00" id="SK654" nVehContrib="4" flow="48.00" occupancy="95.94" speed="1.09" harmonicMeanSpeed="0.09" length="5.00" nVehEntered="4"/>
+    <interval begin="1500.00" end="1800.00" id="SK654" nVehContrib="9" flow="108.00" occupancy="92.36" speed="2.34" harmonicMeanSpeed="0.14" length="5.00" nVehEntered="9"/>
+    <interval begin="1800.00" end="2100.00" id="SK654" nVehContrib="3" flow="36.00" occupancy="96.95" speed="1.48" harmonicMeanSpeed="0.08" length="5.00" nVehEntered="3"/>
+    <interval begin="2100.00" end="2400.00" id="SK654" nVehContrib="10" flow="120.00" occupancy="92.90" speed="3.94" harmonicMeanSpeed="0.14" length="5.00" nVehEntered="10"/>
+    <interval begin="2400.00" end="2700.00" id="SK654" nVehContrib="3" flow="36.00" occupancy="96.58" speed="0.05" harmonicMeanSpeed="0.05" length="5.00" nVehEntered="3"/>
+    <interval begin="2700.00" end="3000.00" id="SK654" nVehContrib="3" flow="36.00" occupancy="97.12" speed="0.62" harmonicMeanSpeed="0.06" length="5.00" nVehEntered="3"/>
+    <interval begin="3000.00" end="3300.00" id="SK654" nVehContrib="7" flow="84.00" occupancy="94.27" speed="2.57" harmonicMeanSpeed="0.11" length="5.00" nVehEntered="7"/>
+    <interval begin="3300.00" end="3600.00" id="SK654" nVehContrib="6" flow="72.00" occupancy="94.62" speed="1.60" harmonicMeanSpeed="0.10" length="5.00" nVehEntered="6"/>
+</detector>

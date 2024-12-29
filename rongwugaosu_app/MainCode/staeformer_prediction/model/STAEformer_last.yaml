@@ -1,0 +1,177 @@
+FLOW_UP:
+  num_nodes: 8
+  in_steps: 24
+  out_steps: 12
+
+  train_size: 0.8
+  val_size: 0.1
+
+  data_mean: 98.21571338284949
+  data_std: 50.49159882679281
+
+  time_of_day: True
+  day_of_week: True
+  day_of_month: True
+
+  lr: 0.001
+  weight_decay: 0.0003
+  milestones: [20,40,60,80,100,120,140,160,180,200]
+  lr_decay_rate: 0.1
+  batch_size: 64
+  max_epochs: 200
+  early_stop: 30
+  use_cl: False
+  cl_step_size: 2500
+  #clip_grad: 5
+
+  model_args:
+    num_nodes: 8
+    in_steps: 24
+    out_steps: 12
+    steps_per_day: 288
+    input_dim: 4
+    output_dim: 1
+    input_embedding_dim: 24
+    tod_embedding_dim: 24
+    dow_embedding_dim: 24
+    dom_embedding_dim: 24
+    spatial_embedding_dim: 0
+    adaptive_embedding_dim: 96
+    feed_forward_dim: 512
+    num_heads: 6
+    num_layers: 3
+    dropout: 0
+
+FLOW_DOWN:
+  num_nodes: 8
+  in_steps: 24
+  out_steps: 12
+
+  train_size: 0.8
+  val_size: 0.1
+
+  data_mean: 97.7338934953368
+  data_std: 52.29404656912832
+
+  time_of_day: True
+  day_of_week: True
+  day_of_month: True
+
+  lr: 0.0006
+  weight_decay: 0.00005
+  milestones: [40,80,120,160,200,240,280,320,360]
+  lr_decay_rate: 0.3
+  batch_size: 64
+  max_epochs: 300
+  early_stop: 30
+  use_cl: False
+  cl_step_size: 2500
+  #clip_grad: 5
+
+  model_args:
+    num_nodes: 8
+    in_steps: 24
+    out_steps: 12
+    steps_per_day: 288
+    input_dim: 4
+    output_dim: 1
+    input_embedding_dim: 24
+    tod_embedding_dim: 24
+    dow_embedding_dim: 24
+    dom_embedding_dim: 24
+    spatial_embedding_dim: 0
+    adaptive_embedding_dim: 96
+    feed_forward_dim: 256
+    num_heads: 4
+    num_layers: 5
+    dropout: 0.2
+
+SPEED_UP:
+  num_nodes: 7
+  in_steps: 24
+  out_steps: 12
+
+  train_size: 0.8
+  val_size: 0.1
+
+  data_mean: 89.99888884493735
+  data_std: 10.49963152189923
+
+  time_of_day: True
+  day_of_week: True
+  day_of_month: False
+
+  lr: 0.0018
+  weight_decay: 0.0001
+  milestones: [40,80,120,160,200,240,280,320,360]
+  lr_decay_rate: 0.3
+  batch_size: 64
+  max_epochs: 500
+  early_stop: 50
+  use_cl: False
+  cl_step_size: 2500
+  #clip_grad: 5
+
+  model_args:
+    num_nodes: 7
+    in_steps: 24
+    out_steps: 12
+    steps_per_day: 288
+    input_dim: 3
+    output_dim: 1
+    input_embedding_dim: 24
+    tod_embedding_dim: 24
+    dow_embedding_dim: 24
+    dom_embedding_dim: 0
+    spatial_embedding_dim: 0
+    adaptive_embedding_dim: 96
+    feed_forward_dim: 256
+    num_heads: 4
+    num_layers: 2
+    dropout: 0.2
+
+SPEED_DOWN:
+  num_nodes: 7
+  in_steps: 24
+  out_steps: 12
+
+  train_size: 0.8
+  val_size: 0.1
+
+  data_mean: 91.15628965776033
+  data_std: 12.14506440519835
+
+  time_of_day: True
+  day_of_week: True
+  day_of_month: True
+
+  lr: 0.0019
+  weight_decay: 0.0001
+  milestones: [40,80,120,160,200,240,280,320,360]
+  lr_decay_rate: 0.5
+  batch_size: 64
+  max_epochs: 500
+  early_stop: 30
+  use_cl: False
+  cl_step_size: 2500
+  #clip_grad: 5
+
+  model_args:
+    num_nodes: 7
+    in_steps: 24
+    out_steps: 12
+    steps_per_day: 288
+    input_dim: 4
+    output_dim: 1
+    input_embedding_dim: 24
+    tod_embedding_dim: 24
+    dow_embedding_dim: 24
+    dom_embedding_dim: 24
+    spatial_embedding_dim: 0
+    adaptive_embedding_dim: 96
+    feed_forward_dim: 256
+    num_heads: 4
+    num_layers: 2
+    dropout: 0.4
+
+

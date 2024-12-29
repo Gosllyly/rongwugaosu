@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-12-29 01:56:18 by Eclipse SUMO netedit Version 1.19.0
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- Detectors -->
+    <inductionLoop id="SK628-1" lane="S12_1" pos="634.04" period="300.00" file="output/S/SK628/SK628-1.xml"/>
+<inductionLoop id="SK628-2" lane="S12_0" pos="633.42" period="300.00" file="output/S/SK628/SK628-2.xml"/>
+<inductionLoop id="SK633-1" lane="S23_1" pos="153.05" period="300.00" file="output/S/SK633/SK633-1.xml"/>
+<inductionLoop id="SK633-2" lane="S23_0" pos="152.70" period="300.00" file="output/S/SK633/SK633-2.xml"/>
+<inductionLoop id="SK654" lane="312332518#1_0" pos="249.43" period="300.00" file="output/S/SK654/SK654.xml"/>
+<inductionLoop id="SK660-1" lane="S59_1" pos="394.11" period="300.00" file="output/S/SK660/SK660-1.xml"/>
+<inductionLoop id="SK660-2" lane="S59_0" pos="394.55" period="300.00" file="output/S/SK660/SK660-2.xml"/>
+<inductionLoop id="SK664-1" lane="S64_1" pos="516.74" period="300.00" file="output/S/SK664/SK664-1.xml"/>
+<inductionLoop id="SK664-2" lane="S64_0" pos="517.88" period="300.00" file="output/S/SK664/SK664-2.xml"/>
+<inductionLoop id="SK677-1" lane="E11_1" pos="99.42" period="300.00" file="output/S/SK677/SK677-1.xml"/>
+<inductionLoop id="SK677-2" lane="E11_0" pos="100.07" period="300.00" file="output/S/SK677/SK677-2.xml"/>
+<inductionLoop id="SK678" lane="397003194_0" pos="161.93" period="300.00" file="output/S/SK678/SK678.xml"/>
+<inductionLoop id="SK679-1" lane="S77_1" pos="105.52" period="300.00" file="output/S/SK679/SK679-1.xml"/>
+<inductionLoop id="SK679-2" lane="S77_0" pos="105.08" period="300.00" file="output/S/SK679/SK679-2.xml"/>
+<inductionLoop id="SK680-1" lane="E13_1" pos="75.43" period="300.00" file="output/S/SK680/SK680-1.xml"/>
+<inductionLoop id="SK680-2" lane="E13_0" pos="76.80" period="300.00" file="output/S/SK680/SK680-2.xml"/>
+<inductionLoop id="SK681-1" lane="S80_1" pos="978.64" period="300.00" file="output/S/SK681/SK681-1.xml"/>
+<inductionLoop id="SK681-2" lane="S80_0" pos="978.27" period="300.00" file="output/S/SK681/SK681-2.xml"/>
+<inductionLoop id="SK682-1" lane="S81_1" pos="480.94" period="300.00" file="output/S/SK682/SK682-1.xml"/>
+<inductionLoop id="SK682-2" lane="S81_0" pos="482.19" period="300.00" file="output/S/SK682/SK682-2.xml"/>
+<inductionLoop id="SK688-1" lane="S86_1" pos="795.79" period="300.00" file="output/S/SK688/SK688-1.xml"/>
+<inductionLoop id="SK688-2" lane="S86_0" pos="796.34" period="300.00" file="output/S/SK688/SK688-2.xml"/>
+<inductionLoop id="XK628-1" lane="X11_0" pos="146.04" period="300.00" file="output/X/XK628/XK628-1.xml"/>
+<inductionLoop id="XK628-2" lane="X11_1" pos="146.19" period="300.00" file="output/X/XK628/XK628-2.xml"/>
+<inductionLoop id="XK629-1" lane="X14_0" pos="961.86" period="300.00" file="output/X/XK629/XK629-1.xml"/>
+<inductionLoop id="XK629-2" lane="X14_1" pos="962.10" period="300.00" file="output/X/XK629/XK629-2.xml"/>
+<inductionLoop id="XK633-1" lane="X23_0" pos="2152.42" period="300.00" file="output/X/XK633/XK633-1.xml"/>
+<inductionLoop id="XK633-2" lane="X23_1" pos="2153.06" period="300.00" file="output/X/XK633/XK633-2.xml"/>
+<inductionLoop id="XK660-1" lane="X59_0" pos="349.15" period="300.00" file="output/X/XK660/XK660-1.xml"/>
+<inductionLoop id="XK660-2" lane="X59_1" pos="348.59" period="300.00" file="output/X/XK660/XK660-2.xml"/>
+<inductionLoop id="XK664-1" lane="X64_0" pos="1584.40" period="300.00" file="output/X/XK664/XK664-1.xml"/>
+<inductionLoop id="XK664-2" lane="X64_1" pos="1583.77" period="300.00" file="output/X/XK664/XK664-2.xml"/>
+<inductionLoop id="XK677-1" lane="E12_0" pos="47.62" period="300.00" file="output/X/XK677/XK677-1.xml"/>
+<inductionLoop id="XK677-2" lane="E12_1" pos="47.28" period="300.00" file="output/X/XK677/XK677-2.xml"/>
+<inductionLoop id="XK678" lane="397003193_0" pos="179.00" period="300.00" file="output/X/XK678/XK678.xml"/>
+<inductionLoop id="XK679-1" lane="X77_0" pos="770.01" period="300.00" file="output/X/XK679/XK679-1.xml"/>
+<inductionLoop id="XK679-2" lane="X77_1" pos="769.96" period="300.00" file="output/X/XK679/XK679-2.xml"/>
+<inductionLoop id="XK680" lane="E6_0" pos="104.37" period="300.00" file="output/X/XK680/XK680.xml"/>
+<inductionLoop id="XK682-1" lane="X80_0" pos="361.48" period="300.00" file="output/X/XK682/XK682-1.xml"/>
+<inductionLoop id="XK682-2" lane="X80_1" pos="361.34" period="300.00" file="output/X/XK682/XK682-2.xml"/>
+
+    <!-- Shapes -->
+    <poly id="po_0" color="cyan" fill="0" layer="0.00" shape="17843.146410,63511.867867 18118.959984,63620.631561 18184.497082,63469.756795 17902.827002,63344.817987 17842.867529,63511.588985"/>
+    <poly id="po_1" color="cyan" fill="0" layer="0.00" shape="20316.003067,57968.778326 20570.489408,58170.657670 20681.621685,58041.112944 20381.104224,57780.708317 20262.738485,57923.404792 20319.291005,57972.066263"/>
+    <poly id="po_10" color="cyan" fill="0" layer="0.00" shape="20114.159184,58363.439064 20212.006812,58420.362998 20241.238022,58372.208427 20138.928788,58311.284432 20114.159184,58363.592912"/>
+    <poly id="po_11" color="magenta" fill="0" layer="0.00" shape="51633.764042,13788.458121 51910.176392,13561.821175 52136.813339,13660.312932 52347.564518,13216.570499 52085.978883,13102.192975 52124.104725,12694.458282"/>
+    <poly id="po_12" color="magenta" fill="0" layer="0.00" shape="51574.457177,13767.277098 51519.386517,13419.908321 51330.875412,13308.707950 51523.622722,12860.729312 51699.425213,12859.670261 52084.919832,12688.103975 52120.927571,12700.812588"/>
+    <poly id="po_13" color="magenta" fill="0" layer="0.00" shape="51572.339075,13766.218047 51632.704990,13790.576224"/>
+    <poly id="po_14" color="red" fill="0" layer="0.00" shape="21328.448098,56244.186961 21477.269284,56160.776109 21447.606458,56116.915691 21299.038800,56211.228265 21326.926927,56244.694017"/>
+    <poly id="po_15" color="magenta" fill="0" layer="0.00" shape="28051.445050,47558.385093 28055.735360,47509.046535 28039.289174,47470.910451 28145.593507,47391.301377 28191.356807,47406.555810 28257.141552,47393.208181 28278.354748,47416.804883 28273.587738,47463.998286 28280.738253,47506.901380 28148.453713,47595.806125 28116.991444,47591.039115 28066.222783,47578.168186 28051.206700,47558.146742"/>
+    <poly id="po_16" color="red" fill="0" layer="0.00" shape="42093.329281,26292.704381 42192.808461,26335.020152 42270.016182,26163.901115 42157.916510,26116.759862 42092.215708,26291.961999"/>
+    <poly id="po_2" color="cyan" fill="0" layer="0.00" shape="20540.596718,57437.476640 20882.819032,57710.554293 20974.720165,57602.023431 20653.503824,57326.320032 20546.723460,57443.603383"/>
+    <poly id="po_3" color="cyan" fill="0" layer="0.00" shape="22071.371877,55570.274265 22316.020470,55708.289815 22386.546754,55591.195937 22143.922839,55439.345087 22070.359538,55570.274265"/>
+    <poly id="po_4" color="cyan" fill="0" layer="0.00" shape="32051.816263,44954.559403 31958.112157,44793.644912 32035.920031,44748.745028 32134.922881,44938.384290 32065.481445,44977.148786 32049.864094,44952.328353"/>
+    <poly id="po_5" color="cyan" fill="0" layer="0.00" shape="34509.088366,41898.157354 34771.891571,42023.619901 34846.500955,41878.113041 34557.343191,41740.772383 34492.013581,41890.733534 34511.686702,41898.899736"/>
+    <poly id="po_6" color="cyan" fill="0" layer="0.00" shape="47853.240162,18819.411027 48037.859562,18985.903144 48122.918348,18902.517645 47948.896437,18721.244820 47853.519043,18819.411027"/>
+    <poly id="po_7" color="cyan" fill="0" layer="0.00" shape="50766.235071,15098.875746 51021.007053,15242.627884 51094.907800,15118.110187 50831.024767,14964.909551 50766.909963,15100.900424"/>
+    <poly id="po_8" color="cyan" fill="0" layer="0.00" shape="51073.827528,14477.761899 51396.800789,14636.186204 51462.130399,14506.751914 51133.849107,14351.185779 51074.235838,14478.170209"/>
+    <poly id="po_9" color="cyan" fill="0" layer="0.00" shape="50568.187428,15508.914625 50761.452146,15627.996926 50809.140843,15555.208915 50611.692905,15425.250244 50568.466309,15508.356862"/>
+</additional>
