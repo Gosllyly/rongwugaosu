@@ -20,21 +20,21 @@ class SimulateView(View):
     # 保证在任意时刻，后台只运行一个仿真任务，不允许并发仿真
     @api_view(['POST'])
     def start_emulate(request: HttpRequest):
-        simulate_type = request.data.get('type')  # 类型，代表是自定义参数设置的仿真，1代表是典型场景的仿真
+        simulate_type = int(request.data.get('type'))  # 类型，代表是自定义参数设置的仿真，1代表是典型场景的仿真
         if simulate_type == 0:
-            step = request.data.get('duration')  # 仿真时长
-            selection = request.data.get('selection')  # 时段选择，传0代表从0点到1点，传1代表从1点到2点，以此类推
+            step = int(request.data.get('duration')) * 60 + 600  # 仿真时长
+            selection = int(request.data.get('selection'))  # 时段选择，传0代表从0点到1点，传1代表从1点到2点，以此类推
         else:
             step = 3600
             selection = None  # 时段选择，传0代表从0点到1点，传1代表从1点到2点，以此类推
         roadName = request.data.get('roadName')  # 路段名称
-        speedLimit = request.data.get('speedLimit')  # 路段限速
-        direction = request.data.get('direction')  # 运行方向,0代表上行，1代表下行
-        amplitude = request.data.get('amplitude')  # 超速幅度
-        trafficDem = request.data.get('trafficDem')  # 交通需求
+        speedLimit = int(request.data.get('speedLimit'))  # 路段限速
+        direction = int(request.data.get('direction'))  # 运行方向,0代表上行，1代表下行
+        amplitude = int(request.data.get('amplitude'))  # 超速幅度
+        trafficDem = int(request.data.get('trafficDem'))  # 交通需求
         # 将上下行方向和路段名称存入缓存
-        print(type(direction))
-        cache.set('direction', int(direction))
+        # print(type(direction))
+        cache.set('direction', direction)
         cache.set('roadName', roadName)
         if is_simulating():
             return uniform_response(False, 201, "正在仿真中，请稍后继续......", None)
@@ -60,7 +60,7 @@ class SimulateView(View):
         direction_dict = {0: "S", 1: "X"}
         direction = cache.get('direction')
         roadName = cache.get('roadName')
-        print(direction, roadName)
+        # print(direction, roadName)
         # 需要改成绝对路径
         current_dir_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         file_path = current_dir_path + f"/sumo/output/{direction_dict[direction]}/{direction_dict[direction]}{roadName}"
@@ -133,9 +133,16 @@ class SimulateView(View):
         tree = ET.parse(file_path)
         root = tree.getroot()
         intervals = root.findall('interval')
-        # for item in intervals:
-        #     print(value_name,item.find(value_name))
-        return [int(float(item.get(value_name))) for item in intervals], len(intervals)
+        value_list = []
+        for item in intervals:
+            # 获取 begin 属性并将其转换为浮点数
+            begin_value = float(item.get('begin'))
+            # 检查 begin 值是否大于等于 600.00
+            if begin_value >= 600.00:
+                # 输出符合条件的 interval
+                value_list.append(int(float(item.get(value_name))))
+        return value_list, len(value_list)
+        # return [int(float(item.get(value_name))) for item in intervals], len(intervals)
 
     @staticmethod
     def add_flow_from_multiple_xml(files_list, value_name="flow"):

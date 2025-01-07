@@ -1,35 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
 <routes>
-    <!-- 定义普通车辆类型 -->
-    <vType id="passenger" accel="2.6" decel="4.5" sigma="0.5" length="5.0" maxSpeed="39" />
+    
+    <vType id="passenger" accel="2.6" decel="4.5" sigma="0.5" length="5.0" maxSpeed="30.86" />
 
-    <!-- 定义拥堵车辆类型 -->
+    
     <vType id="slow_passenger" accel="2.0" decel="4.5" sigma="0.5" length="5.0" maxSpeed="10" />
-    <!-- 定义路线 -->
-    <route id="SK628" edges="S12"/>
-    <route id="SK633" edges="S13 S14 S15 S16 S17 S18 S19 S20-1 S21 S22 S23"/>
-    <route id="SK660" edges="S24 S25 S26 S27 S28 S29 S30 S31 S32 S33 S34 S35-1 S36 S37 S38 S39 S40 S41 S42 S43 S44 S45 S46 S47 S48 S49-1 S50 S51 S52 S53 S54 S55 S56 S57 S58 S59"/>
-    <route id="SK664" edges="S60 S61 S62 S63 S64"/>
-    <route id="SK679" edges="S65 S66 S67 S68-1 S69 S70-1 S71 S72 S73 S74 S75 S76 S77"/>
-    <route id="SK681" edges="S78 S79-1 S79-2 S79-3 S80 "/>
-    <route id="SK682" edges="S81"/>
-    <route id="SK688" edges="S82 S83 S84 S85 S86 "/>
-    <route id="SK680" edges="E13 E9 E8 S79-3 S80"/>
-    <route id="SK678" edges="S65 S66 S67 S68-1 S69 397003194 499510832#1 -499510832#1 -499510832#0 -499510833 -397003190 397003192 X68 X67-1 X66 X65 X64"/>
-    <route id="SK677" edges="S65 S66 S67 E49 E11 E7 S69 S70-1 S71 S72 S73 S74 S75 S76 S77"/>
-    <route id="SK654" edges="312332518#1 S36 S37 S38 S39 S40 S41 S42 S43 S44 S45 S46 S47 S48 S49-1 S50 S51 S52 S53 S54 S55 S56 S57 S58 S59"/>
+    
+    <route id="SK628" edges="S12" />
+    <route id="SK633" edges="S13 S14 S15 S16 S17 S18 S19 S20-1 S21 S22 S23" />
+    <route id="SK660" edges="S24 S25 S26 S27 S28 S29 S30 S31 S32 S33 S34 S35-1 S36 S37 S38 S39 S40 S41 S42 S43 S44 S45 S46 S47 S48 S49-1 S50 S51 S52 S53 S54 S55 S56 S57 S58 S59" />
+    <route id="SK664" edges="S60 S61 S62 S63 S64" />
+    <route id="SK679" edges="S65 S66 S67 S68-1 S69 S70-1 S71 S72 S73 S74 S75 S76 S77" />
+    <route id="SK681" edges="S78 S79-1 S79-2 S79-3 S80 " />
+    <route id="SK682" edges="S81" />
+    <route id="SK688" edges="S82 S83 S84 S85 S86 " />
+    <route id="SK680" edges="E13 E9 E8 S79-3 S80" />
+    <route id="SK678" edges="S65 S66 S67 S68-1 S69 397003194 499510832#1 -499510832#1 -499510832#0 -499510833 -397003190 397003192 X68 X67-1 X66 X65 X64" />
+    <route id="SK677" edges="S65 S66 S67 E49 E11 E7 S69 S70-1 S71 S72 S73 S74 S75 S76 S77" />
+    <route id="SK654" edges="312332518#1 S36 S37 S38 S39 S40 S41 S42 S43 S44 S45 S46 S47 S48 S49-1 S50 S51 S52 S53 S54 S55 S56 S57 S58 S59" />
 
-    <route id="XK682" edges="X80"/>
-    <route id="XK679" edges="X79 X78 X77 "/>
-    <route id="XK664" edges="X76 X75 X74 X73 X72 X71 X70 X69-1 X68 X67-1 X66 X65 X64"/>
-    <route id="XK660" edges="X63 X62 X61 X60 X59"/>
-    <route id="XK633" edges="X48-1 X47 X46 X45 X44 X43 X42 X41 X40 X39 X38 X37 X36 X35 X34 X33 X32 X31 X30 X29 X28 X27 X26 X25 X24 X23"/>
-    <route id="XK629" edges="X22 X21 X20 X19-1 X18 X17 X16 X15 X14"/>
-    <route id="XK628" edges="X13 X12 X11"/>
-    <route id="XK680" edges="E6 X77"/>
-    <route id="XK678" edges="X76 X75 X74 X73 X72 X71 X70  397003193 397003190 499510833 499510832#0 499510832#1 397003195 S71 S72 S73 S74 S75 S76 S77"/>
-    <route id="XK677" edges="X76 X75 X74 X73 X72 X71 X70 X69-1 X68 E50 E12 E10 X66 X65 X64 "/>
+    <route id="XK682" edges="X80" />
+    <route id="XK679" edges="X79 X78 X77 " />
+    <route id="XK664" edges="X76 X75 X74 X73 X72 X71 X70 X69-1 X68 X67-1 X66 X65 X64" />
+    <route id="XK660" edges="X63 X62 X61 X60 X59" />
+    <route id="XK633" edges="X48-1 X47 X46 X45 X44 X43 X42 X41 X40 X39 X38 X37 X36 X35 X34 X33 X32 X31 X30 X29 X28 X27 X26 X25 X24 X23" />
+    <route id="XK629" edges="X22 X21 X20 X19-1 X18 X17 X16 X15 X14" />
+    <route id="XK628" edges="X13 X12 X11" />
+    <route id="XK680" edges="E6 X77" />
+    <route id="XK678" edges="X76 X75 X74 X73 X72 X71 X70  397003193 397003190 499510833 499510832#0 499510832#1 397003195 S71 S72 S73 S74 S75 S76 S77" />
+    <route id="XK677" edges="X76 X75 X74 X73 X72 X71 X70 X69-1 X68 E50 E12 E10 X66 X65 X64 " />
 
-    <flow id="SK628" begin="0" end="3600" type="passenger" route="SK628" probability="0.2778"/>
-    <flow id="SK628_slow" begin="0" end="3600" type="slow_passenger" route="SK628" probability="0.02" />
+    <flow id="SK633" begin="0" end="1800" type="passenger" route="SK633" probability="0.2778" />
+    <flow id="SK633_slow" begin="0" end="1800" type="slow_passenger" route="SK633" probability="0.0278" />
 
 </routes>

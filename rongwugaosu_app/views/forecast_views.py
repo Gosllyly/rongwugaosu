@@ -15,7 +15,7 @@ class ForecastView(View):
         direction = request.data.get('direction')  # 运行方向
         type = request.data.get('type')  # 预测时间类型
         startTime = request.data.get('startTime')  # 时段选择
-        time_list, prediction_list = predict_flow(date, roadName, int(direction), type, int(startTime))
+        time_list, prediction_list = predict_flow(date, roadName, int(direction), int(type), int(startTime))
         data = {
             "time": sorted(list(set(time_list))),
             "prediction": prediction_list,
@@ -29,7 +29,7 @@ class ForecastView(View):
         direction = request.data.get('direction')
         type = request.data.get('type')
         startTime = request.data.get('startTime')
-        time_list, speed_list = predict_speed(date, roadName, int(direction), type, startTime)
+        time_list, speed_list = predict_speed(date, roadName, int(direction), int(type), int(startTime))
         data = {
             "time": sorted(list(set(time_list))),
             "prediction": speed_list,
