@@ -11,6 +11,7 @@ from django.core.cache import cache
 import os
 import xml.etree.ElementTree as ET
 from ..MainCode.staeformer_prediction.model.predict import time_list_process
+from ..MainCode.staeformer_evaluation.metrics import traffic_demand_data
 
 
 # 该文件编写仿真相关的接口
@@ -120,7 +121,7 @@ class SimulateView(View):
 
     @api_view(['GET'])
     def get_direction(request: HttpRequest):
-        roadName = request.data.get('roadName')  # 路段名称
+        roadName = request.GET.get('roadName')  # 路段名称
         road_dirction_dict = {"K628": ["0", "1"], "K633": ["0", "1"], "K654": ["0"], "K660": ["0", "1"],
                               "K664": ["0", "1"], "K677": ["0", "1"], "K678": ["0", "1"], "K679": ["0", "1"],
                               "K680": ["0", "1"], "K681": ["0"], "K682": ["0", "1"], "K688": ["0"], "K629": ["1"]}
@@ -144,7 +145,7 @@ class SimulateView(View):
         time_list = []
         for file_path in files_list:
             current_values, time_num = SimulateView.parse_xml(file_path, value_name)
-            time_list = time_list_process("00:00", time_num, 5)
+            time_list = time_list_process("00:05", time_num - 1, 5)
             if total_values is None:
                 # 如果是第一个文件，初始化 total_values
                 total_values = current_values
@@ -163,7 +164,7 @@ class SimulateView(View):
         time_list = []
         for file_path in files_list:
             current_values, time_num = SimulateView.parse_xml(file_path, value_name)
-            time_list = time_list_process("00:00", time_num, 5)
+            time_list = time_list_process("00:05", time_num - 1, 5)
             if max_values is None:
                 # 初始化 max_values
                 max_values = current_values
@@ -174,3 +175,13 @@ class SimulateView(View):
                 # 取最大值
                 max_values = [int(max(x) * 3.6) for x in zip(max_values, current_values)]
         return max_values, time_list
+
+    @api_view(['GET'])
+    def get_traffic_flow(request: HttpRequest):
+        # time_dict = {0: "工作日", 1: "周末", 2: "节假日"}
+        time_type = int(request.GET.get('type'))
+        selection = int(request.GET.get('selection'))
+        # traffic_flow = traffic_demand_data.loc[f"{time_type}-{time_type + 1}", time_dict[selection]]
+        # print(type(traffic_demand_data))
+        traffic_flow = traffic_demand_data.iloc[time_type, selection + 1]
+        return uniform_response(True, 200, "成功", [traffic_flow])

@@ -11,21 +11,31 @@ import sqlite3
 
 def select_day_data(data, target_date):
     data['时间'] = pd.to_datetime(data['时间'])
-    day_data = data[data['时间'].datetime.strftime('%Y-%m-%d') == target_date]
+    # print("-------------------------------------")
+    # print(data['时间'])
+    # print("-------------------------------------")
+    # print(data['时间'].dt.strftime('%Y-%m-%d'))
+    day_data = data[data['时间'].dt.strftime('%Y-%m-%d') == target_date]
+    print(data['时间'].dt.strftime('%Y-%m-%d'))
+    print(target_date)
     return day_data
 
 
 def select_not_null(flow_data, speed_data):
+    # 确保时间列转换为 datetime 类型
+    flow_data['时间'] = pd.to_datetime(flow_data['时间'], errors='coerce')
+    speed_data['时间'] = pd.to_datetime(speed_data['时间'], errors='coerce')
+
     flow_filtered_times = set(flow_data[
         flow_data['断面2流量'].notna() & flow_data['断面3流量'].notna() & flow_data[
             '断面4流量'].notna() & flow_data['断面5流量'].notna() & flow_data[
             '断面6流量'].notna() & flow_data['断面7流量'].notna() & flow_data[
-            '断面8流量'].notna()]['时间'].datetime.strftime(
+            '断面8流量'].notna()]['时间'].dt.strftime(
         '%Y-%m-%d'))
     speed_filtered_times = set(
         speed_data[speed_data['Column_1'].notna() & speed_data['Column_2'].notna() & speed_data['Column_3'].notna() &
                    speed_data['Column_4'].notna() & speed_data['Column_5'].notna() & speed_data['Column_6'].notna() &
-                   speed_data['Column_7'].notna()]['时间'].datetime.strftime('%Y-%m-%d'))
+                   speed_data['Column_7'].notna()]['时间'].dt.strftime('%Y-%m-%d'))
 
     common_times = flow_filtered_times.intersection(speed_filtered_times)
 
@@ -41,16 +51,17 @@ def read_sqlite():
     # 使用 Pandas 读取数据并存储到 DataFrame
     full_year_flow_data = pd.read_sql_query('SELECT * FROM "上行流量"', conn)
     full_year_speed_data = pd.read_sql_query('SELECT * FROM "上行速度"', conn)
+    traffic_demand_data = pd.read_sql_query('SELECT * FROM "交通需求"', conn)
     # 关闭数据库连接
     conn.close()
-    return full_year_flow_data, full_year_speed_data
+    return full_year_flow_data, full_year_speed_data, traffic_demand_data
 
 
 # 全局变量
 # 0表示上行，1代表下行
-section_dict = {0: {'K628': 0, 'K633': 1, 'K660': 2, 'K664': 3, 'K679': 4, 'K681': 5, 'K682': 6},
-                1: {'K682': 0, 'K679': 1, 'K664': 2, 'K660': 3, 'K633': 4, 'K629': 5, 'K628': 6}}
-full_year_flow_data, full_year_speed_data = read_sqlite()
+section_dict = {"上行": {'K628': 0, 'K633': 1, 'K660': 2, 'K664': 3, 'K679': 4, 'K681': 5, 'K682': 6},
+                "下行": {'K682': 0, 'K679': 1, 'K664': 2, 'K660': 3, 'K633': 4, 'K629': 5, 'K628': 6}}
+full_year_flow_data, full_year_speed_data, traffic_demand_data = read_sqlite()
 
 
 def get_road_metrics(direction):
@@ -61,11 +72,11 @@ def get_road_metrics(direction):
     Returns:
         tuple: 包括道路长度列表、t95 时间列表、自由流时间列表。
     """
-    if direction == 1:
+    if direction == "上行":
         road_lengths = [0.68, 4.755, 26.865, 4.066, 15.134, 2.45, 0.5]
         t95_times = [0.6474, 7.2666, 35.5044, 3.1662, 12.3024, 1.7388, 0.4614]
         free_flow_times = [0.34, 2.3775, 13.4325, 2.033, 7.567, 1.225, 0.25]
-    elif direction == 0:
+    elif direction == "下行":
         road_lengths = [0.55, 2.95, 15.116, 4.064, 26.85, 4.27, 0.5]
         t95_times = [0.3833, 2.7333, 12.3333, 3.1333, 20.4, 3.35, 0.4833]
         free_flow_times = [0.2833, 1.4833, 7.55, 2.0333, 13.4333, 2.1333, 0.25]
@@ -74,11 +85,21 @@ def get_road_metrics(direction):
     return road_lengths, t95_times, free_flow_times
 
 
+# def time_trans(datetime_str):
+# 定义日期时间格式并解析字符串
+# datetime_obj = datetime.strptime(datetime_str, "%Y-%m-%d %H:%M:%S")
+# 提取小时和分钟，并格式化为"HH:MM"格式
+# return datetime_obj.strftime("%H:%M")
 def time_trans(datetime_str):
-    # 定义日期时间格式并解析字符串
-    datetime_obj = datetime.strptime(datetime_str, "%Y/%m/%d %H:%M:%S")
-    # 提取小时和分钟，并格式化为"HH:MM"格式
-    return datetime_obj.strftime("%H:%M")
+    if isinstance(datetime_str, pd.Timestamp):  # 检查是否是 pandas 的 Timestamp
+        return datetime_str.strftime('%H:%M')  # 使用 strftime 转换为字符串
+    elif isinstance(datetime_str, str):  # 检查是否是字符串
+        # 定义日期时间格式并解析字符串
+        datetime_obj = datetime.strptime(datetime_str, "%Y-%m-%d %H:%M:%S")
+        # 提取小时和分钟，并格式化为"HH:MM"格式
+        return datetime_obj.strftime("%H:%M")
+    else:
+        raise TypeError("输入必须是字符串或 pandas.Timestamp 对象")  # 抛出类型错误
 
 
 def calculate_flow_difference(data, direction, roadName):
@@ -93,6 +114,8 @@ def calculate_flow_difference(data, direction, roadName):
     for datetime_str in data['时间']:
         time_list.append(time_trans(datetime_str))
     section_index = section_dict[direction][roadName] + 2
+    print(time_list)
+
     return time_list, (data[f'断面{section_index + 1}流量'] - data[f'断面{section_index}流量']).tolist()
 
 
@@ -141,6 +164,7 @@ def calculate_average_speed(speed_data, direction, roadName):
     time_list = []
     for datetime_str in speed_data['时间']:
         time_list.append(time_trans(datetime_str))
+    del time_list[0]
     section_index = section_dict[direction][roadName] + 1
     return time_list, speed_data[f'Column_{section_index}'].tolist()
 
@@ -189,9 +213,12 @@ def calculate_spi_select(data, direction, roadName):
 
     time_list = []
     for datetime_str in data['时间']:
+        print(type(datetime_str), datetime_str)
+        datetime_str = datetime_str.strftime('%Y-%m-%d %H:%M:%S')
         time_list.append(time_trans(datetime_str))
+    del time_list[0]
     section_index = section_dict[direction][roadName] + 1
-    return time_list, (data[section_index].apply(spi_value)).tolist()
+    return time_list, (data[f'Column_{section_index}'].apply(spi_value)).tolist()
 
 
 def calculate_congestion_duration(spi_data, direction, roadName, time_interval=5):
@@ -223,7 +250,10 @@ def calculate_congestion_duration(spi_data, direction, roadName, time_interval=5
     time_list = []
     section_index = section_dict[direction][roadName] + 1
     for datetime_str in spi_data['时间']:
+        datetime_str = datetime_str.strftime('%Y-%m-%d %H:%M:%S')
         time_list.append(time_trans(datetime_str))
+    del time_list[0]
+    print(spi_data[f'路段{section_index}SPI'], spi_data['时间'])
     duration_list = daily_congestion(spi_data[f'路段{section_index}SPI'], spi_data['时间'])
     return time_list, duration_list
 

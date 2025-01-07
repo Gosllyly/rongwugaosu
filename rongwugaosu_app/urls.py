@@ -17,11 +17,12 @@ urlpatterns = [
     path('simulation/speed', SimulateView.speed, name='speed'),  # 路段平均速度折线图
     path('simulation/getRoadName', SimulateView.get_road_name, name='get_road_name'),  # 下拉获取路段名称
     path('simulation/getDirection', SimulateView.get_direction, name='get_direction'),  # 获取对应路段的运行方向
+    path('simulation/getTrafficFlow', SimulateView.get_traffic_flow, name='get_traffic_flow'),  # 获取对应路段的运行方向
 
     # 预测相关
     path('prediction/rateFlow', ForecastView.rate_flow, name='rate_flow'),  # 流量预测折线图
     path('prediction/speed', ForecastView.speed, name='speed'),  # 速度预测折线图
-    path('prediction/getData', ForecastView.get_date, name='get_date'),  # 获取场景对应可选日期
+    path('prediction/getDate', ForecastView.get_predict_date, name='get_predict_date'),  # 获取场景对应可选日期
 
     # 评价相关
     path('evaluate/prediction', EvaluateView.prediction, name='prediction'),  # 路段X-流量变化折线图

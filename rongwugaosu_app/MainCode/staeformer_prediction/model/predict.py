@@ -1,10 +1,9 @@
-
 from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
 import yaml
 from .STAEformer import *
-
+import os
 
 
 class StandardScaler:
@@ -19,13 +18,19 @@ class StandardScaler:
         return (data * self.std) + self.mean
 
 
+current_dir_path = os.path.dirname(os.path.abspath(__file__))
+section_dict = {0: {'K628': 0, 'K633': 1, 'K660': 2, 'K664': 3, 'K679': 4, 'K681': 5, 'K682': 6},
+                1: {'K682': 0, 'K679': 1, 'K664': 2, 'K660': 3, 'K633': 4, 'K629': 5, 'K628': 6}}
+
+
 class STAEformerPredictor:
-    def __init__(self, dataset, data_index, predict_time_frame=288):
+
+    def __init__(self, dataset, data_start_index, data_end_index, predict_time_frame=288):
 
         self.cfg = self.load_config(dataset)
         self.dataset = dataset
-        self.data_start_index = data_index
-        self.data_end_index = self.data_start_index + 24
+        self.data_start_index = data_start_index
+        self.data_end_index = data_end_index
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.scaler = StandardScaler(mean=self.cfg['data_mean'], std=self.cfg['data_std'])
         self.model = self.load_model(self.cfg["model_args"])
@@ -34,12 +39,15 @@ class STAEformerPredictor:
         self.predict_time_frame = predict_time_frame
 
     def load_config(self, dataset):
-        with open("./STAEformer_last.yaml", "r") as f:
+        # 获取当前文件目录的绝对路径
+        yaml_path = current_dir_path + "/STAEformer_last.yaml"
+        with open(yaml_path, "r") as f:
             cfg = yaml.safe_load(f)
         return cfg[dataset]
 
     def load_data(self):
-        data_temp = np.load(f"..\\data\\{self.dataset}\\combined_data.npz")['combined_data']
+        data_path = os.path.dirname(current_dir_path) + f"/data/{self.dataset}/combined_data.npz"
+        data_temp = np.load(data_path)['combined_data']
         data_temp[:, :, 2] -= 1  # Adjusting data as per your requirement
         features = [0]
         if self.cfg['time_of_day']:
@@ -52,8 +60,8 @@ class STAEformerPredictor:
 
     def load_model(self, model_args):
         model = STAEformer(**model_args).to(self.device)
-        model.load_state_dict(torch.load(f'..\\saved_models\\STAEformer-{self.dataset}.pt'))
-        model.eval()
+        save_model_path = os.path.dirname(current_dir_path) + f"/saved_models/STAEformer-{self.dataset}.pt"
+        model.load_state_dict(torch.load(save_model_path, map_location=torch.device('cpu'), weights_only=True))
         return model
 
     def predict_long(self):
@@ -95,38 +103,64 @@ def parse_date(date_str):
 
 
 def predict_flow(date, roadName, direction, type, startTime):
-    time_index = int(
-        (parse_date(date_process(date, startTime)) - parse_date('2023-01-01 00:00:00')).total_seconds() / 300 - 24)
-    time_list = time_list_process("00:00", time_index, 5)
-    predictor_flow = STAEformerPredictor(f'FLOW_{direction}', time_index)
-    # start_time = time.time()
+    direction_up_down = {0: "UP", 1: "DOWN"}
     if type == 0:
+        start_index = int(
+            (parse_date(date_process(date, startTime + 1)) - parse_date(
+                '2023-01-01 00:00:00')).total_seconds() / 300 - 12)
+        time_list = time_list_process("00:05", 11, 5)
+        predictor_flow = STAEformerPredictor(f'FLOW_{direction_up_down[direction]}', start_index, start_index + 12)
         predictions_flow = predictor_flow.predict_short()
     else:
+        start_index = int(
+            (parse_date(date_process(date, 24)) - parse_date(
+                '2023-01-01 00:00:00')).total_seconds() / 300 - 12 * 24)
+        time_list = time_list_process("00:05", 12 * 24 - 1, 5)
+        predictor_flow = STAEformerPredictor(f'FLOW_{direction_up_down[direction]}', start_index, start_index + 12 * 24)
         predictions_flow = predictor_flow.predict_long()
     # print("Flow prediction running time:", time.time() - start_time)
-    return time_list, list(predictions_flow[roadName])
+    return time_list, list(predictions_flow[section_dict[direction][roadName]])
 
 
 # 预测速度的主要逻辑
 def predict_speed(date, roadName, direction, type, startTime):
-    time_index = int(
-        (parse_date(date_process(date, startTime)) - parse_date('2023-01-01 00:00:00')).total_seconds() / 300 - 24)
-    time_list = time_list_process("00:00", time_index, 5)
-    if direction == 0:
-        if date >= parse_date('2024-01-01'):
-            time_index -= 96480
-        else:
-            time_index -= 69960
+    direction_up_down = {0: "UP", 1: "DOWN"}
+    # time_index = int(
+    #     (parse_date(date_process(date, startTime)) - parse_date('2023-01-01 00:00:00')).total_seconds() / 300 - 12)
+    # time_list = time_list_process("00:05", time_index + 1, 5)
 
-    predictor_speed = STAEformerPredictor(f'SPEED_{direction}', time_index)
+    # predictor_speed = STAEformerPredictor(f'SPEED_{direction_up_down[direction]}', time_index)
     # start_time = time.time()
     if type == 0:
+        start_index = int(
+            (parse_date(date_process(date, startTime + 1)) - parse_date(
+                '2023-01-01 00:00:00')).total_seconds() / 300 - 12)
+        if direction == 0:
+            date = date + " 00:00:00"
+            if parse_date(date) >= parse_date('2024-01-01 00:00:00'):
+                start_index -= 96480
+            else:
+                start_index -= 69960
+        time_list = time_list_process("00:05", 11, 5)
+        predictor_speed = STAEformerPredictor(f'FLOW_{direction_up_down[direction]}', start_index, start_index + 12)
         predictions_speed = predictor_speed.predict_short()
     else:
+        start_index = int(
+            (parse_date(date_process(date, 24)) - parse_date(
+                '2023-01-01 00:00:00')).total_seconds() / 300 - 12 * 24)
+
+        if direction == 0:
+            date = date + " 00:00:00"
+            if parse_date(date) >= parse_date('2024-01-01 00:00:00'):
+                start_index -= 96480
+            else:
+                start_index -= 69960
+        time_list = time_list_process("00:05", 12 * 24 - 1, 5)
+        predictor_speed = STAEformerPredictor(f'FLOW_{direction_up_down[direction]}', start_index,
+                                              start_index + 12 * 24)
         predictions_speed = predictor_speed.predict_long()
     # print("Speed prediction running time:", time.time() - start_time)
-    return time_list, list(predictions_speed[roadName])
+    return time_list, list(predictions_speed[section_dict[direction][roadName]])
 
 
 def time_list_process(original_time_str, time_index, delta):
@@ -149,7 +183,7 @@ def date_process(date, startTime):
     # 将字符串转换为 datetime 对象
     original_datetime = datetime.strptime(date, "%Y-%m-%d")
     # 增加两个小时
-    new_datetime = original_datetime + timedelta(hours=startTime)
+    new_datetime = original_datetime + timedelta(hours=int(startTime))
     # 将 datetime 对象格式化为字符串
     return new_datetime.strftime("%Y-%m-%d %H:%M:%S")
 

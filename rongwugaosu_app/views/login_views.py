@@ -13,11 +13,11 @@ class LoginView(View):
         username = request.data.get('username')
         password = request.data.get('password')
         if (username == "admin") & (password == "admin"):
-            return uniform_response(True, "200", "login successfully", None)
+            return uniform_response(True, 200, "login successfully", None)
         elif username != "admin":
-            return uniform_response(True, "201", "用户名不存在", None)
+            return uniform_response(True, 201, "用户名不存在", None)
         else:
-            return uniform_response(True, "201", "密码错误", None)
+            return uniform_response(True, 201, "密码错误", None)
 
     @api_view(['GET'])
     def get_portrayal(request: HttpRequest):
@@ -30,6 +30,6 @@ class LoginView(View):
                 "face score": "A",
                 "wealth": "10 billion"
             }
-            return uniform_response(True, "200", "", data)
+            return uniform_response(True, 200, "", data)
         else:
-            return uniform_response(True, "401", username + "'s portrayal is not exist.", None)
+            return uniform_response(True, 401, username + "'s portrayal is not exist.", None)

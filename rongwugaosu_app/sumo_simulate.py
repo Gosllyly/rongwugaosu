@@ -43,7 +43,12 @@ def simulate(args):
                 flow.set('route', f"{direction_dict[direction]}{roadName}")
                 flow.set('end', str(step))
                 flow.set('probability', str(round(trafficDem / 3600, 4)))
+            if flow.get('type') == 'slow_passenger':
+                flow.set('id', f"{direction_dict[direction]}{roadName}_slow")
+                flow.set('route', f"{direction_dict[direction]}{roadName}")
+                flow.set('end', str(step))
                 # 将修改后的 XML 写回文件
+
         tree.write(xml_file, encoding='utf-8', xml_declaration=True)
         # 可以定义一个文件模板，每次修改模板文件中的占位符，生成新的文件作为 sumo 启动所需的文件
 

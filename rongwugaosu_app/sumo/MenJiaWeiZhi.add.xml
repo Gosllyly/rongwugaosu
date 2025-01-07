@@ -1,51 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2024-12-29 01:56:18 by Eclipse SUMO netedit Version 1.19.0
+<!-- generated on 2025-01-06 23:31:25 by Eclipse SUMO netedit Version 1.19.0
 -->
 
 <additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
     <!-- Detectors -->
-    <inductionLoop id="SK628-1" lane="S12_1" pos="634.04" period="300.00" file="output/S/SK628/SK628-1.xml"/>
-<inductionLoop id="SK628-2" lane="S12_0" pos="633.42" period="300.00" file="output/S/SK628/SK628-2.xml"/>
-<inductionLoop id="SK633-1" lane="S23_1" pos="153.05" period="300.00" file="output/S/SK633/SK633-1.xml"/>
-<inductionLoop id="SK633-2" lane="S23_0" pos="152.70" period="300.00" file="output/S/SK633/SK633-2.xml"/>
-<inductionLoop id="SK654" lane="312332518#1_0" pos="249.43" period="300.00" file="output/S/SK654/SK654.xml"/>
-<inductionLoop id="SK660-1" lane="S59_1" pos="394.11" period="300.00" file="output/S/SK660/SK660-1.xml"/>
-<inductionLoop id="SK660-2" lane="S59_0" pos="394.55" period="300.00" file="output/S/SK660/SK660-2.xml"/>
-<inductionLoop id="SK664-1" lane="S64_1" pos="516.74" period="300.00" file="output/S/SK664/SK664-1.xml"/>
-<inductionLoop id="SK664-2" lane="S64_0" pos="517.88" period="300.00" file="output/S/SK664/SK664-2.xml"/>
-<inductionLoop id="SK677-1" lane="E11_1" pos="99.42" period="300.00" file="output/S/SK677/SK677-1.xml"/>
-<inductionLoop id="SK677-2" lane="E11_0" pos="100.07" period="300.00" file="output/S/SK677/SK677-2.xml"/>
-<inductionLoop id="SK678" lane="397003194_0" pos="161.93" period="300.00" file="output/S/SK678/SK678.xml"/>
-<inductionLoop id="SK679-1" lane="S77_1" pos="105.52" period="300.00" file="output/S/SK679/SK679-1.xml"/>
-<inductionLoop id="SK679-2" lane="S77_0" pos="105.08" period="300.00" file="output/S/SK679/SK679-2.xml"/>
-<inductionLoop id="SK680-1" lane="E13_1" pos="75.43" period="300.00" file="output/S/SK680/SK680-1.xml"/>
-<inductionLoop id="SK680-2" lane="E13_0" pos="76.80" period="300.00" file="output/S/SK680/SK680-2.xml"/>
-<inductionLoop id="SK681-1" lane="S80_1" pos="978.64" period="300.00" file="output/S/SK681/SK681-1.xml"/>
-<inductionLoop id="SK681-2" lane="S80_0" pos="978.27" period="300.00" file="output/S/SK681/SK681-2.xml"/>
-<inductionLoop id="SK682-1" lane="S81_1" pos="480.94" period="300.00" file="output/S/SK682/SK682-1.xml"/>
-<inductionLoop id="SK682-2" lane="S81_0" pos="482.19" period="300.00" file="output/S/SK682/SK682-2.xml"/>
-<inductionLoop id="SK688-1" lane="S86_1" pos="795.79" period="300.00" file="output/S/SK688/SK688-1.xml"/>
-<inductionLoop id="SK688-2" lane="S86_0" pos="796.34" period="300.00" file="output/S/SK688/SK688-2.xml"/>
-<inductionLoop id="XK628-1" lane="X11_0" pos="146.04" period="300.00" file="output/X/XK628/XK628-1.xml"/>
-<inductionLoop id="XK628-2" lane="X11_1" pos="146.19" period="300.00" file="output/X/XK628/XK628-2.xml"/>
-<inductionLoop id="XK629-1" lane="X14_0" pos="961.86" period="300.00" file="output/X/XK629/XK629-1.xml"/>
-<inductionLoop id="XK629-2" lane="X14_1" pos="962.10" period="300.00" file="output/X/XK629/XK629-2.xml"/>
-<inductionLoop id="XK633-1" lane="X23_0" pos="2152.42" period="300.00" file="output/X/XK633/XK633-1.xml"/>
-<inductionLoop id="XK633-2" lane="X23_1" pos="2153.06" period="300.00" file="output/X/XK633/XK633-2.xml"/>
-<inductionLoop id="XK660-1" lane="X59_0" pos="349.15" period="300.00" file="output/X/XK660/XK660-1.xml"/>
-<inductionLoop id="XK660-2" lane="X59_1" pos="348.59" period="300.00" file="output/X/XK660/XK660-2.xml"/>
-<inductionLoop id="XK664-1" lane="X64_0" pos="1584.40" period="300.00" file="output/X/XK664/XK664-1.xml"/>
-<inductionLoop id="XK664-2" lane="X64_1" pos="1583.77" period="300.00" file="output/X/XK664/XK664-2.xml"/>
-<inductionLoop id="XK677-1" lane="E12_0" pos="47.62" period="300.00" file="output/X/XK677/XK677-1.xml"/>
-<inductionLoop id="XK677-2" lane="E12_1" pos="47.28" period="300.00" file="output/X/XK677/XK677-2.xml"/>
-<inductionLoop id="XK678" lane="397003193_0" pos="179.00" period="300.00" file="output/X/XK678/XK678.xml"/>
-<inductionLoop id="XK679-1" lane="X77_0" pos="770.01" period="300.00" file="output/X/XK679/XK679-1.xml"/>
-<inductionLoop id="XK679-2" lane="X77_1" pos="769.96" period="300.00" file="output/X/XK679/XK679-2.xml"/>
-<inductionLoop id="XK680" lane="E6_0" pos="104.37" period="300.00" file="output/X/XK680/XK680.xml"/>
-<inductionLoop id="XK682-1" lane="X80_0" pos="361.48" period="300.00" file="output/X/XK682/XK682-1.xml"/>
-<inductionLoop id="XK682-2" lane="X80_1" pos="361.34" period="300.00" file="output/X/XK682/XK682-2.xml"/>
-
+    <inductionLoop id="SK628" lane="S12_0" pos="591.06" period="300.00" file="output/S/SK628/SK628.xml"/>
+    <inductionLoop id="SK633" lane="S23_0" pos="154.80" period="300.00" file="output/S/SK633/SK633.xml"/>
+    <inductionLoop id="SK654" lane="312332518#1_0" pos="249.43" period="300.00" file="output/S/SK654/SK654.xml"/>
+    <inductionLoop id="SK660" lane="S59_0" pos="394.11" period="300.00" file="output/S/SK660/SK660.xml"/>
+    <inductionLoop id="SK664" lane="S64_0" pos="513.08" period="300.00" file="output/S/SK664/SK664.xml"/>
+    <inductionLoop id="SK677" lane="E11_0" pos="103.03" period="300.00" file="output/S/SK677/SK677.xml"/>
+    <inductionLoop id="SK678" lane="397003194_0" pos="161.93" period="300.00" file="output/S/SK678/SK678.xml"/>
+    <inductionLoop id="SK679" lane="S77_0" pos="96.31" period="300.00" file="output/S/SK679/SK679.xml"/>
+    <inductionLoop id="SK680" lane="E13_0" pos="81.70" period="300.00" file="output/S/SK680/SK680.xml"/>
+    <inductionLoop id="SK681" lane="S80_0" pos="972.87" period="300.00" file="output/S/SK681/SK681.xml"/>
+    <inductionLoop id="SK682" lane="S81_0" pos="468.75" period="300.00" file="output/S/SK682/SK682.xml"/>
+    <inductionLoop id="SK688" lane="S86_0" pos="779.74" period="300.00" file="output/S/SK688/SK688.xml"/>
+    <inductionLoop id="XK628" lane="X11_0" pos="133.96" period="300.00" file="output/X/XK628/XK628.xml"/>
+    <inductionLoop id="XK629" lane="X14_0" pos="973.12" period="300.00" file="output/X/XK629/XK629.xml"/>
+    <inductionLoop id="XK633" lane="X23_0" pos="2143.05" period="300.00" file="output/X/XK633/XK633.xml"/>
+    <inductionLoop id="XK660" lane="X59_0" pos="342.95" period="300.00" file="output/X/XK660/XK660.xml"/>
+    <inductionLoop id="XK664" lane="X64_0" pos="1570.63" period="300.00" file="output/X/XK664/XK664.xml"/>
+    <inductionLoop id="XK677" lane="E12_0" pos="48.51" period="300.00" file="output/X/XK677/XK677.xml"/>
+    <inductionLoop id="XK678" lane="397003193_0" pos="179.00" period="300.00" file="output/X/XK678/XK678.xml"/>
+    <inductionLoop id="XK679" lane="X77_0" pos="750.58" period="300.00" file="output/X/XK679/XK679.xml"/>
+    <inductionLoop id="XK680" lane="E6_0" pos="104.37" period="300.00" file="output/X/XK680/XK680.xml"/>
+    <inductionLoop id="e1_0" lane="X80_0" pos="360.38" period="300.00" file="output/X/XK682/XK682.xml"/>
     <!-- Shapes -->
     <poly id="po_0" color="cyan" fill="0" layer="0.00" shape="17843.146410,63511.867867 18118.959984,63620.631561 18184.497082,63469.756795 17902.827002,63344.817987 17842.867529,63511.588985"/>
     <poly id="po_1" color="cyan" fill="0" layer="0.00" shape="20316.003067,57968.778326 20570.489408,58170.657670 20681.621685,58041.112944 20381.104224,57780.708317 20262.738485,57923.404792 20319.291005,57972.066263"/>
